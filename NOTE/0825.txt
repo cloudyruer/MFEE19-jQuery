@@ -1,0 +1,28 @@
+BOM vs DOM 9:37
+
+DOM 是 BOM其中的一小塊
+BOM: Document Locatoin History Navigator ....
+DOM(Document): images links form layers others...
+DOM 每一個element都是一個節點Node
+
+------------------------
+$(document).ready(function): ->可以多次 (簡寫 $(function() {});
+$(window).load(function): --> 只能一次
+
+slim版本沒有ajax & effects
+
+----------------------
+看一個網站有沒有用jQuery
+可以直接console jQuery
+------------------------
+
+
+
+
+
+
+
+
+
+
+
