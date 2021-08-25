@@ -63,7 +63,12 @@
     ></script>
 
     <script>
-      $('td:gt(2)').css('background', 'yellow');
+      // chaining
+      $('td:even').css('background', 'blue');
+      $('td:first').css('background', 'yellow');
+
+      //  DOM
+      $('td:last').css('background', 'red').css('color', 'white');
     </script>
   </body>
 </html>
