@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ex5 - mine</title>
+    <style>
+      * {
+        margin: 0;
+      }
+
+      .wrap {
+        max-width: 800px;
+        height: 550px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      ul.train {
+        display: flex;
+        width: 4000px;
+        list-style: none;
+        padding: 0;
+        transition: 0.5s;
+        /* transform: translateX(-800px); */
+      }
+
+      li.car img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .slider-dots {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .slider-dots li {
+        width: 40px;
+        height: 10px;
+        border: 2px solid #fff;
+        margin: 0 4px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrap">
+      <ul class="train">
+        <li class="car"><img src="./imgs/slide1.jpg" alt="" /></li>
+        <li class="car"><img src="./imgs/slide2.jpg" alt="" /></li>
+        <li class="car"><img src="./imgs/slide3.jpg" alt="" /></li>
+        <li class="car"><img src="./imgs/slide4.jpg" alt="" /></li>
+        <li class="car"><img src="./imgs/slide5.jpg" alt="" /></li>
+      </ul>
+
+      <ul class="slider-dots">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script>
+      (() => {
+        let distance = 0;
+        let myIntervalID = '';
+
+        $('.slider-dots li').first().css('background-color', '#fff');
+
+        $('.slider-dots li').hover(
+          function () {
+            isPaused = true;
+            distance = -800 * $(this).index();
+
+            clearInterval(myIntervalID);
+
+            $('.train').css('transform', `translateX(${distance}px)`);
+
+            $(this)
+              .css('background-color', '#fff')
+              .siblings()
+              .css('background-color', 'transparent');
+          },
+          () => {
+            startInterval();
+          }
+        );
+
+        const startInterval = () =>
+          (myIntervalID = setInterval(() => {
+            distance === -3200 ? (distance = 0) : (distance -= 800);
+
+            let page = distance / -800;
+
+            $('.slider-dots li')
+              .eq(page)
+              .css('background-color', '#fff')
+              .siblings()
+              .css('background-color', 'transparent');
+
+            $('.train').css('transform', `translateX(${distance}px)`);
+          }, 3000));
+
+        startInterval();
+      })();
+    </script>
+  </body>
+</html>

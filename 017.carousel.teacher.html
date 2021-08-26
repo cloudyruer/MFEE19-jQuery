@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ex5</title>
+    <style>
+      * {
+        margin: 0;
+      }
+
+      .wrap {
+        max-width: 800px;
+        height: 550px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      ul.train {
+        display: flex;
+        width: 4000px;
+        list-style: none;
+        padding: 0;
+        transform: translateX(-0px);
+        transition: 0.5s;
+      }
+
+      li.car img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .slider-dots {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .slider-dots li {
+        width: 40px;
+        height: 10px;
+        border: 2px solid #fff;
+        margin: 0 4px;
+      }
+
+      /* .slider-dots li:nth-child(1) {
+            background: #FFF;
+        } */
+    </style>
+  </head>
+
+  <body>
+    <div class="wrap">
+      <ul class="train">
+        <li class="car"><img src="./imgs/slide1.jpg" alt="" /></li>
+        <li class="car"><img src="./imgs/slide2.jpg" alt="" /></li>
+        <li class="car"><img src="./imgs/slide3.jpg" alt="" /></li>
+        <li class="car"><img src="./imgs/slide4.jpg" alt="" /></li>
+        <li class="car"><img src="./imgs/slide5.jpg" alt="" /></li>
+      </ul>
+
+      <ul class="slider-dots">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+
+    <script src="./js/jquery-3.6.0.js"></script>
+
+    <script>
+      let page = 0;
+
+      let myIntervalID = '';
+
+      function startInterval() {
+        myIntervalID = setInterval(() => {
+          page++;
+
+          if (page > 4) {
+            page = 0;
+          }
+          // console.log('hi', page);
+          $('ul.train').css('transform', `translateX(${page * -800}px)`);
+
+          $('.slider-dots li')
+            .eq(page)
+            .css('background', '#fff')
+            .siblings()
+            .css('background', 'transparent');
+        }, 3000);
+      }
+
+      $('.slider-dots li').hover(
+        function () {
+          clearInterval(myIntervalID);
+          // 我知道目前 HOVER　的是第幾個 LI
+          console.log('index:', $(this).index());
+          page = $(this).index();
+          // 所以我也可以知道我的火車要移動多少距離?
+          // 0 -> 0
+          // 1 -> -800
+          // 2 -> -1600
+          // 3 -> -2400
+          // 4 -> -3200
+          console.log('move x:', $(this).index() * -800);
+
+          // 選取我的火車dom，並且修改他的 css
+          $('ul.train').css(
+            'transform',
+            `translateX(${$(this).index() * -800}px)`
+          );
+
+          $(this)
+            .css('background', '#fff')
+            .siblings()
+            .css('background', 'transparent');
+        },
+        function () {
+          startInterval();
+        }
+      );
+
+      startInterval();
+      $('.slider-dots li').eq(0).css('background', '#fff');
+    </script>
+  </body>
+</html>
