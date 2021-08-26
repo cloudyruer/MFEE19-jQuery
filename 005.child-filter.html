@@ -42,6 +42,8 @@
         <div class="box">box10</div>
         <div class="box">box11</div>
         <div class="box">box12</div>
+        <h3 class="box">only-of-type h3</h3>
+        <h4 class="box">only-of-type h4</h4>
       </div>
     </div>
     <script src="./js/jquery-3.6.0.js"></script>
@@ -52,6 +54,10 @@
 
       //   第一個div
       $('.box:first-of-type').css('background', 'blue');
+      $('.box:nth-child(5)').css('background', 'red');
+      $('.box:nth-of-type(2)').css('background', 'yellow');
+      // .box中 唯一的type
+      $('.box:only-of-type').css('background', 'pink');
     </script>
   </body>
 </html>

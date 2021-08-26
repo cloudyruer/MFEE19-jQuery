@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div hidden>abc</div>
+    <div><p>def</p></div>
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script>
+      // NOTE: 背後
+      // div[Attributes Style] {
+      //     display: none;
+      // }
+
+      // NOTE
+      // ●:hidden- 選取隱藏的
+      // ●:visible- 選取看得見的
+
+      //   NOTE show: 會把 display:none 改掉 並加上一個display:block
+      //   WARN 所以如果有 display: flex 會被蓋掉
+      // 因為他是直接加上一個 display:block...
+      $('div:hidden').show();
+      // $('div:visible').hide();
+
+      //   NOTE Changing the display CSS value of an element with the hidden attribute overrides the behavior. For instance, an element styled display: flex will be displayed on screen regardless of the hidden attribute being present.
+    </script>
+  </body>
+</html>

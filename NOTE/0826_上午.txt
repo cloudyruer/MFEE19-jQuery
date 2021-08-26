@@ -1,0 +1,12 @@
+:eq() 
+:eve
+:odd
+原本沒有的
+------------
+:nth-child() - 第 n 個(從1開始)
+
+--------------------
+ $('td').eq(0).css('background-color', 'yellow');
+
+-------
+.siblings()- 自己以外的元素

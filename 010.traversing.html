@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous"
+    />
+    <title>basic filter</title>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <ul>
+        <li>eq() - 選取第 n 個(從0開始計算)</li>
+        <li>even - 選取第偶數個(從0開始計算)</li>
+        <li>odd - 選取第奇數個(從0開始計算)</li>
+        <li>first - 選取第一個</li>
+        <li>last - 選取最後一個</li>
+        <li>gt() - 選取大於第 n 個的(也可以給負數)</li>
+        <li>lt() - 選取小於第 n 個的(也可以給負數)</li>
+      </ul>
+    </div>
+
+    <div class="container mt-5">
+      <div class="row">
+        <table class="table table-bordered">
+          <tr>
+            <td>td1</td>
+            <td>td2</td>
+            <td>td3</td>
+            <td>td4</td>
+            <td>td5</td>
+          </tr>
+          <tr>
+            <td>td1</td>
+            <td>td2</td>
+            <td>td3</td>
+            <td>td4</td>
+            <td>td5</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <script src="./js/jquery-3.6.0.js"></script>
+
+    <script>
+      //   NOTE 一層一層限制下去
+      $('td')
+        .css('background-color', 'red')
+        .odd()
+        .css('background-color', 'yellow')
+        .eq(0)
+        .css('background-color', 'blue');
+    </script>
+  </body>
+</html>

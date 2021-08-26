@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Ex3</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .container {
+        margin: 200px auto;
+        display: flex;
+        justify-content: center;
+      }
+
+      .box {
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        overflow: hidden;
+      }
+
+      .box:not(:last-child) {
+        margin-right: 30px;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        transition: transform 0.5s;
+      }
+
+      .box:hover img {
+        transform: scale(1.1);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box box1">
+        <img src="./de879ff42791bdc32631fac784f698ab43e7adb6.jpg" alt="" />
+      </div>
+      <div class="box box2">
+        <img src="./de879ff42791bdc32631fac784f698ab43e7adb6.jpg" alt="" />
+      </div>
+      <div class="box box3">
+        <img src="./de879ff42791bdc32631fac784f698ab43e7adb6.jpg" alt="" />
+      </div>
+      <div class="box box4">
+        <img src="./de879ff42791bdc32631fac784f698ab43e7adb6.jpg" alt="" />
+      </div>
+      <div class="box box5">
+        <img src="./de879ff42791bdc32631fac784f698ab43e7adb6.jpg" alt="" />
+      </div>
+    </div>
+    <script src="../js/jquery-3.6.0.js"></script>
+    <script>
+      $('.container').click(e => {
+        $('.box').css('border', 'none');
+
+        e.target.closest('.box')
+          ? (e.target.closest('.box').style.border = '3px solid red')
+          : '';
+      });
+    </script>
+  </body>
+</html>
