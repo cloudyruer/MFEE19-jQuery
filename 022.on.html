@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>On 1</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <button id="add" class="btn btn-primary">Add</button>
+      </div>
+
+      <div class="row">
+        <p>清單</p>
+        <ul>
+          <li>item 1</li>
+          <li>item 2</li>
+        </ul>
+      </div>
+    </div>
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script>
+      $('#add').click(function () {
+        $('ul').append(`<li>item ${$('li').length + 1}</li>`);
+      });
+
+      // 理論上:
+      //  e.currentTarget：指的是註冊事件物件 最外層的
+      // e.target：指的是實際觸發事件的物件 實際被點的
+
+      $('ul').on('click', 'li', function (e) {
+        // NOTE 會一樣
+        console.log('JQ e.target:', e.target);
+        console.log('JQ e.currentTarget:', e.currentTarget);
+      });
+
+      const myUl = document.querySelector('ul');
+
+      myUl.addEventListener('click', function (e) {
+        console.log('JS e.target:', e.target);
+        console.log('JS e.currentTarget:', e.currentTarget);
+      });
+    </script>
+  </body>
+</html>

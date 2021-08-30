@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ex7 teacher</title>
+    <style>
+      body {
+        margin: 0;
+        height: 300vh;
+        transition: 1s;
+        overflow-x: hidden;
+      }
+
+      .wrap {
+        width: 100%;
+        height: 50px;
+        background-color: #ccc;
+        position: fixed;
+        top: 0;
+      }
+
+      .box {
+        background-color: pink;
+        height: 50px;
+        width: 0%;
+        transition: 0.2s;
+      }
+
+      .img-wrap {
+        position: absolute;
+        top: 350px;
+        left: 40%;
+        transition: 1s;
+        opacity: 0;
+        transform: translateX(320px);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrap">
+      <div class="box"></div>
+    </div>
+
+    <div class="img-wrap">
+      <img src="./imgs/3.png" alt="" />
+    </div>
+
+    <script src="./js/jquery-3.6.0.js"></script>
+
+    <script>
+      $(window).resize(function () {
+        changeBoxWidth();
+      });
+
+      $(window).scroll(function () {
+        changeBoxWidth();
+      });
+
+      function changeBoxWidth() {
+        // 1.使用者滾到哪裡?數字是多少?
+        const scrollTop = $(window).scrollTop();
+        // 2.網頁內容全部長度多長?
+        const bodyHeight = $('body').height();
+
+        // 3.計算出目前閱讀的百分比 (誰是分母?誰是分子?)
+        const windowHeight = $(window).height();
+        const percent = (scrollTop / (bodyHeight - windowHeight)) * 100;
+
+        // 4.最後，把這個百分比，給 .box 的 CSS 寬度。
+        $('.box').css('width', `${percent}%`);
+
+        // NOTE translateX(320px) 其實不可以寫死
+        // 應該要用 percent 去算
+        // 不然每次reload就會持續疊加
+        if (percent > 20) {
+          $('body').css('background', 'orange');
+          $('.img-wrap')
+            .css('transform', 'translateX(0px)')
+            .css('opacity', '1');
+        } else {
+          $('body').css('background', 'transparent');
+          $('.img-wrap')
+            .css('transform', 'translateX(320px)')
+            .css('opacity', '0');
+        }
+      }
+    </script>
+  </body>
+</html>

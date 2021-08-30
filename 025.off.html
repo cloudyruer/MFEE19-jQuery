@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>off</title>
+  </head>
+
+  <body>
+    <button class="btn btn-primary" id="sayHi">Hi</button>
+    <button class="btn btn-primary" id="on">on</button>
+    <button class="btn btn-primary" id="off">off</button>
+
+    <script src="./js/jquery-3.6.0.js"></script>
+
+    <script>
+      const sayHi = function () {
+        console.log('say hi');
+      };
+
+      $('#on').on('click', function () {
+        $('#sayHi').on('click', sayHi);
+      });
+
+      $('#off').on('click', function () {
+        $('#sayHi').off('click', sayHi);
+      });
+    </script>
+  </body>
+</html>

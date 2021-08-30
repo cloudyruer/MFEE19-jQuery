@@ -8,8 +8,10 @@
     <style>
       body {
         margin: 0;
-        height: 3000px;
-        /* height: 300vh; */
+        /* height: 3000px; */
+        height: 300vh;
+        transition: 0.5s;
+        overflow-x: hidden;
       }
 
       .wrap {
@@ -24,6 +26,22 @@
         background-color: pink;
         height: 50px;
         width: 0%;
+        transition: width 0.5s ease-out;
+      }
+
+      .percentContent {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .img-wrap {
+        position: absolute;
+        top: 350px;
+        left: 40%;
+        transition: 1s;
+        transform: translateX(320px);
       }
     </style>
   </head>
@@ -31,35 +49,67 @@
   <body>
     <div class="wrap">
       <div class="box"></div>
+      <div class="percentContent">0%</div>
+    </div>
+
+    <div class="img-wrap">
+      <img src="./imgs/person3.jpg" alt="" />
     </div>
 
     <script src="./js/jquery-3.6.0.js"></script>
 
     <script>
-      /* 
-        //  NOTE JS version
+      /*
+      //  NOTE JS version
       const bodyHeight = document
         .querySelector('body')
         .getBoundingClientRect().height;
       const percentBox = document.querySelector('.box');
+      const percentContent = document.querySelector('.percentContent');
 
       window.addEventListener('scroll', () => {
         const pageY = window.pageYOffset;
         const clientHeight = document.documentElement.clientHeight;
-        const percentage = (pageY / (bodyHeight - clientHeight)) * 100 + '%';
-        percentBox.style.width = percentage;
+        const percentage = (pageY / (bodyHeight - clientHeight)) * 100;
+        percentBox.style.width = percentage + '%';
+        percentContent.innerText = percentage.toFixed() + '%';
       });
       */
 
       //   NOTE JQuery Version
-      $(window).scroll(function () {
+      const changeBoxWidth = function () {
         const percentage =
           ($(this).scrollTop() / ($('body').height() - $(window).height())) *
-            100 +
-          '%';
+          100;
 
-        $('.box').css('width', percentage);
-      });
+        // console.log(percentage);
+
+        // NOTE translateX(320px) 其實不可以寫死
+        // 應該要用固定變數去算
+        // 不然每次reload就會持續疊加
+
+        if (percentage >= 20) {
+          $('body').css('background-color', 'orange');
+          $('.img-wrap')
+            .css('transform', 'translateX(0px)')
+            .css('opacity', '1');
+        } else {
+          $('body').css('background-color', 'transparent');
+          $('.img-wrap')
+            .css('transform', 'translateX(320px)')
+            .css('opacity', '0');
+        }
+
+        $('.box').css('width', percentage + '%');
+        $('.percentContent').text(percentage.toFixed() + '%');
+      };
+
+      // changeBoxWidth();
+
+      $(window).scroll(changeBoxWidth);
+      $(window).resize(changeBoxWidth);
+
+      // ['scroll', 'resize'].forEach(e => $(window).on(e, changeBoxWidth));
     </script>
   </body>
 </html>
