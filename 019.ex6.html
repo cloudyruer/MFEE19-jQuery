@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row mt-3">
+        <form action="">
+          <div class="form-row">
+            <div class="form-group mr-3">
+              <select name="city" id="city" class="form-control">
+                <option value="0">基隆</option>
+                <option value="1">台北</option>
+                <option value="2">新北</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <select name="district" id="district" class="form-control">
+                <option value="0">七堵區</option>
+                <option value="1">中正區</option>
+                <option value="2">暖暖區</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script>
+      let districtArray = [
+        ['七堵', '中正', '暖暖'],
+        ['中正', '大安', '信義'],
+        ['蘆洲', '三重', '新店'],
+      ];
+
+      //   用 arrow拿上一層的 this
+      $('#city').change(function () {
+        $('#district option').each(
+          (i, el) => (el.text = districtArray[this.value][i] + '區')
+        );
+      });
+
+      //  JS 迴圈 for(), forEach()
+
+      //  JQ .each()
+      //   $('#district option').each(function () {
+      //     console.log(this.text);
+      //     console.log((this.text = districtArray[0]));
+      //   });
+    </script>
+  </body>
+</html>

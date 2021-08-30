@@ -15,11 +15,12 @@
         height: 550px;
         overflow: hidden;
         position: relative;
+        margin: 0 auto;
       }
 
       ul.train {
         display: flex;
-        width: 4000px;
+        width: 4800px;
         list-style: none;
         padding: 0;
         transition: 0.5s;
@@ -54,11 +55,15 @@
   <body>
     <div class="wrap">
       <ul class="train">
+        <!-- <li class="car"><img src="./imgs/slide5.jpg" alt="" /></li> -->
+
         <li class="car"><img src="./imgs/slide1.jpg" alt="" /></li>
         <li class="car"><img src="./imgs/slide2.jpg" alt="" /></li>
         <li class="car"><img src="./imgs/slide3.jpg" alt="" /></li>
         <li class="car"><img src="./imgs/slide4.jpg" alt="" /></li>
         <li class="car"><img src="./imgs/slide5.jpg" alt="" /></li>
+
+        <li class="car"><img src="./imgs/slide1.jpg" alt="" /></li>
       </ul>
 
       <ul class="slider-dots">
@@ -99,18 +104,49 @@
 
         const startInterval = () =>
           (myIntervalID = setInterval(() => {
-            distance === -3200 ? (distance = 0) : (distance -= 800);
+            distance -= 800;
 
             let page = distance / -800;
+
+            if (distance === -4800) {
+              distance = -800;
+
+              const train = document.querySelector('.train');
+
+              $('.train')
+                .css('transform', 'translateX(0px)')
+                .css('transition', 'none');
+
+              page = 1;
+
+              // NOTE  解法1 我想要這樣 但會怪怪的
+
+              // $('.train')
+              //   .css('transform', 'translateX(-800px)')
+              //   .css('transition', '.5s');
+
+              // NOTE 解法2 丟到call back queue 斷開魂節
+
+              setTimeout(() => {
+                $('.train')
+                  .css('transform', 'translateX(-800px)')
+                  .css('transition', '.5s');
+              });
+
+              /////////////////////////////////////////
+            } else {
+              $('.train')
+                .css('transform', `translateX(${distance}px)`)
+                .css('transition', '0.5s');
+            }
+            if (page === 5) page = 0;
 
             $('.slider-dots li')
               .eq(page)
               .css('background-color', '#fff')
               .siblings()
               .css('background-color', 'transparent');
-
-            $('.train').css('transform', `translateX(${distance}px)`);
-          }, 3000));
+          }, 1000));
 
         startInterval();
       })();

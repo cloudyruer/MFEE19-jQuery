@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>scroll and resize</title>
+    <style>
+      body {
+        height: 5000vh;
+        width: 500vw;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script>
+      // ()內無值為偵測位置，有值則為指定位置
+      $(window).scroll(function () {
+        console.log('scrollTop:', $(this).scrollTop());
+        console.log('scrollLeft:', $(this).scrollLeft());
+      });
+
+      $(window).resize(function () {
+        console.log('resize width:', $(this).width());
+        console.log('resize height:', $(window).height());
+      });
+    </script>
+  </body>
+</html>
