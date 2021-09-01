@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous"
+    />
+    <title>ex10</title>
+    <style>
+      .color-demo,
+      .color-selector-area {
+        height: 400px;
+        border: 1px solid #ccc;
+        display: flex;
+      }
+
+      .color-selector {
+        width: 60px;
+        height: 60px;
+        margin: 10px;
+      }
+
+      .color-selector:nth-child(1) {
+        background-color: lightgreen;
+        border-radius: 50%;
+      }
+
+      .color-selector:nth-child(2) {
+        background-color: lightpink;
+        border-radius: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <div class="color-demo"></div>
+        </div>
+        <div class="col-6">
+          <div class="color-selector-area">
+            <div class="color-selector"></div>
+            <div class="color-selector"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script>
+      $('.color-selector').on('click', function () {
+        $('.color-demo').css(
+          'background-color',
+          $(this).css('background-color')
+        );
+      });
+    </script>
+  </body>
+</html>

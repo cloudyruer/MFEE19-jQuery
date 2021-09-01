@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ex8</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      .wrap {
+        width: 800px;
+        height: 400px;
+        background-color: #ccc;
+        position: relative;
+      }
+
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: lightblue;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap mx-auto mt-3">
+      <div class="box"></div>
+    </div>
+
+    <!-- top -->
+    <div class="py-3 text-center">
+      <div>
+        <button id="up" class="btn btn-info">
+          <i class="fas fa-caret-up"></i>
+        </button>
+      </div>
+
+      <!-- left & right -->
+      <div class="py-1">
+        <button id="left" class="btn btn-info mx-3">
+          <i class="fas fa-caret-left"></i>
+        </button>
+        <button id="right" class="btn btn-info mx-3">
+          <i class="fas fa-caret-right"></i>
+        </button>
+      </div>
+
+      <!-- down -->
+      <div>
+        <button id="down" class="btn btn-info">
+          <i class="fas fa-caret-down"></i>
+        </button>
+      </div>
+    </div>
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script>
+      const rightEffect = () => {
+        if (parseInt($('.box').css('right')) <= 0) return;
+        $('.box').css('left', '+=100');
+      };
+
+      const leftEffect = () => {
+        if (parseInt($('.box').css('left')) <= 0) return;
+        $('.box').css('left', '-=100');
+      };
+
+      const upEffect = () => {
+        if (parseInt($('.box').css('top')) <= 0) return;
+        $('.box').css('top', '-=100');
+      };
+
+      const downEffect = () => {
+        if (parseInt($('.box').css('top')) >= 300) return;
+        $('.box').css('top', '+=100');
+      };
+
+      $('#right').on('click', rightEffect);
+
+      $('#left').on('click', leftEffect);
+
+      $('#up').on('click', upEffect);
+
+      $('#down').on('click', downEffect);
+
+      $(document).on('keydown', function (e) {
+        if (e.which === 39) rightEffect();
+
+        if (e.which === 37) leftEffect();
+
+        if (e.which === 38) upEffect();
+
+        if (e.which === 40) downEffect();
+      });
+    </script>
+  </body>
+</html>

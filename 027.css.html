@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>css</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: #afa;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="box">box</div>
+
+    <script src="./js/jquery-3.6.0.js"></script>
+
+    <script>
+      // 取得 box 的背景顏色
+      console.log('box background-color: ', $('.box').css('background-color'));
+
+      const style = {
+        color: '#fff',
+        background: '#000',
+      };
+
+      $('.box').on('click', function () {
+        if ($('.box').css('background-color') === 'rgb(170, 255, 170)') {
+          $(this).css(style);
+        } else {
+          // 設定 box 的背景色為 #afa
+          $(this).css('background-color', '#afa');
+        }
+      });
+    </script>
+  </body>
+</html>

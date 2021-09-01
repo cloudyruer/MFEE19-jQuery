@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <table class="table table-bordered mt-5">
+          <tr>
+            <td><input type="checkbox" /></td>
+            <td>Elon Musk</td>
+            <td>0912345678</td>
+            <td>elonmusk@gmail.com</td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" /></td>
+            <td>Elon Musk</td>
+            <td>0912345678</td>
+            <td>elonmusk@gmail.com</td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" id="target2" /></td>
+            <td>Elon Musk</td>
+            <td>0912345678</td>
+            <td>elonmusk@gmail.com</td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" id="target" checked /></td>
+            <td>Elon Musk</td>
+            <td>0912345678</td>
+            <td>elonmusk@gmail.com</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <button>Click</button>
+
+    <script src="../js/jquery-3.6.0.js"></script>
+
+    <script>
+      // NOTE As of jQuery 1.6, the .prop() method provides a way to explicitly retrieve property values, while .attr() retrieves attributes.
+      console.log('hi', $('#target').attr('type'));
+      // 方法一
+      $('input[type="checkbox"]').click(function (e) {
+        console.log('hi', $(this).attr('checked'));
+        console.log('hi', $(this).prop('checked'));
+
+        console.log(e.target.checked);
+        console.log(this.checked);
+
+        if ($(this).prop('checked')) {
+          $(this).parent().parent().css('background', 'lightblue');
+        } else {
+          $(this).parent().parent().css('background', 'transparent');
+        }
+      });
+
+      console.log(target.getAttribute('checked'));
+      console.log(target.checked);
+      console.log(target.type);
+      console.log(target);
+
+      //   target2.setAttribute('checked', 'false');
+      //   target.removeAttribute('checked', true);
+
+      // 方法二
+      // $('input[type="checkbox"]').click(function () {
+      //     // console.log('hi');
+      //     $('tr').css('background', 'transparent');
+      //     $('input:checked').closest('tr').css('background', 'lightblue');
+      // });
+    </script>
+
+    <script>
+      //請問 .prop('checked', true) 和 .prop('checked', 'checked')  兩者是一樣的嗎?
+      $('button').click(function () {
+        $('input[type="checkbox"]').eq(0).prop('checked', true);
+        console.log('prop:', $('input[type="checkbox"]').eq(0).prop('checked'));
+        console.log('attr:', $('input[type="checkbox"]').eq(3).attr('checked'));
+      });
+    </script>
+  </body>
+</html>

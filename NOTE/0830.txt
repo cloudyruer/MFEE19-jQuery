@@ -5,8 +5,31 @@ CORS
 http/主機/port一樣 ---> 來源相同
 
 其中一個不一樣就變成跨網域
---------------------------------
+--------------------------------afternoon
+1:50 聽一下
+
+可是這樣好像就不能.style img?
+
+typeof NaN // number
+
+bs col 均分就可以不寫
+<div class="col"> 1 </div>
+<div class="col"> 2 </div>
+<div class="col"> 3 </div>
+<div class="col"> 4 </div>
+<div class="col"> 5 </div>
 
 
+--------
+prop ---> 判斷是否有checked
+狀態
+$(this).prop('checked') --> 判斷當下有沒有加
 
+attributes -> HTML
 
+properties -> DOM
+
+真正的值是bool
+字串就是true
+prop: true
+attr: checked

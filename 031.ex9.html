@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous"
+    />
+    <title>ex9</title>
+    <style></style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row justify-content-end">
+        <div class="btn-group">
+          <div class="btn btn-info" data-size="0.8">S</div>
+          <div class="btn btn-info active" data-size="1">M</div>
+          <div class="btn btn-info" data-size="1.2">L</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <h2>jquery</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt
+          maiores nostrum veritatis vero repudiandae! Est dolorum optio, quos,
+          molestias repellendus, commodi veritatis quibusdam eos suscipit
+          pariatur quia unde eum mollitia.
+        </p>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim nemo
+          ipsa nesciunt, dolorum quos impedit quod quisquam numquam asperiores
+          voluptates cum vel saepe explicabo sequi consequatur consequuntur
+          alias est veniam!
+        </p>
+      </div>
+    </div>
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script>
+      //   $('.btn-group').on('click', '.btn-info', function (e) {
+      //     // let size = $(this).text();
+      //     // if (size === 'S') $('p').css('font-size', '.8rem');
+      //     // if (size === 'M') $('p').css('font-size', '1rem');
+      //     // if (size === 'L') $('p').css('font-size', '1.5rem');
+      //     // console.log(e.target.dataset.size);
+      //     $('p').css('font-size', e.target.dataset.size + 'rem');
+      //   });
+
+      $('.btn-group').on('click', '.btn-info', function () {
+        $(this).addClass('active').siblings().removeClass('active');
+        $('p').css('font-size', this.dataset.size + 'rem');
+      });
+    </script>
+  </body>
+</html>

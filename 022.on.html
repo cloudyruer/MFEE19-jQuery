@@ -37,6 +37,7 @@
       // e.target：指的是實際觸發事件的物件 實際被點的
 
       $('ul').on('click', 'li', function (e) {
+        console.log(e);
         // NOTE 會一樣
         console.log('JQ e.target:', e.target);
         console.log('JQ e.currentTarget:', e.currentTarget);
@@ -45,6 +46,7 @@
       const myUl = document.querySelector('ul');
 
       myUl.addEventListener('click', function (e) {
+        console.log(e);
         console.log('JS e.target:', e.target);
         console.log('JS e.currentTarget:', e.currentTarget);
       });

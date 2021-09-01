@@ -20,7 +20,7 @@
           <form>
             <!-- name -->
             <div class="form-group">
-              <label for="name">Name</label>
+              <label for="username">Name</label>
               <input type="text" class="form-control" id="username" />
             </div>
             <!-- nickname -->
@@ -44,7 +44,7 @@
       //   nickname.value = 'SpiderMan';
       // });
 
-      $('.auto').click(function (e) {
+      $('.auto').on('click', function (e) {
         e.preventDefault();
         $('#username').val('Peter Parker');
         $('#nickname').val('SpiderMan');
