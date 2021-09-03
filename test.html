@@ -4,10 +4,40 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      .box {
+        width: 100px;
+        height: 100px;
+      }
+
+      #box1 {
+        background-color: #afa;
+        position: absolute;
+      }
+
+      #box2 {
+        background-color: red;
+        position: absolute;
+      }
+
+      #box3 {
+        background-color: yellow;
+        position: absolute;
+      }
+    </style>
   </head>
+
   <body>
-    <h2>test</h2>
+    <div id="box1" class="box"></div>
+    <div id="box2" class="box"></div>
+    <div id="box3" class="box"></div>
     <script src="./test.js"></script>
   </body>
 </html>

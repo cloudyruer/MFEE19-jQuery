@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="detachBtn">click</button>
+    <button id="pasteBtn">paste</button>
+    <div class="container">
+      <div class="row flex-column">
+        <h1 class="hello helloWorld">Hello World</h1>
+        <h1 class="hello helloWorld1">Hello World1</h1>
+        <h1 class="hello helloWorld2">Hello World2</h1>
+      </div>
+    </div>
+
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script>
+      let myh1;
+
+      $('#detachBtn').on('click', function () {
+        myh1 = $('.helloWorld').detach();
+        console.log(myh1);
+      });
+
+      $('#pasteBtn').on('click', function () {
+        $('.row').append(myh1);
+      });
+    </script>
+  </body>
+</html>

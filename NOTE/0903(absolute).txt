@@ -1,0 +1,52 @@
+position: absolute;
+會從原本的地方浮起來(不占空間)
+可以利用top:0 之類的 以最近的relative 為參照
+如果同時有多個，於HTML中 順序靠後的會顯示在最上面
+但可以使用z-index進行更改
+
+--------------------------------------
+
+$('img').wrap("<div class='img-wrap'></div>");
+可以在選定的對象外加一個 (wrap)
+
+------------------------------
+051
+ $('img').wrapAll("<div class='img-wrap'></div>");
+ 全部包起來 以上課例子來說 只會顯示一個(因為全部被拉到一個中) 
+ --> 被 css 的寬高限制(上課的例子)
+
+ ------------------------------
+ 052 wrapInner()
+ 包內層的
+ e.g.
+
+$('div').wrapInner('<h1></h1>');
+
+Before:
+<div>Hello World</div>
+
+After:
+<div><h1>Hello World</h1></div>
+
+------------------------------
+用get去取得html
+
+cross-origin 跨網域的請求
+因為瀏覽器被阻擋
+
+除非對方有設定sharing
+否則跨網域都會被拒絕 不給寄
+
+http://localhost:5500
+http://localhost:80
+port不一樣就是跨網域了
+
+---------------------
+require vs import
+CORS
+router
+
+-----
+router 
+控制你要去那裡的交通警察
+
