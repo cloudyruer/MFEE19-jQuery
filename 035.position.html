@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>position</title>
+    <style>
+      .wrap {
+        position: relative;
+        width: 800px;
+        height: 400px;
+        background-color: #ccc;
+        margin: 50px;
+        padding: 10px;
+      }
+
+      .box {
+        width: 200px;
+        height: 200px;
+        background-color: #afa;
+      }
+
+      .box2 {
+        background-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="box"></div>
+      <div class="box box2"></div>
+    </div>
+
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script>
+      // 相對位置 NOTE 小心邊界共用
+      // 使用方法和絕對位置基本上一樣，只是座標參考起始點位置不同
+      //  最近的 relative
+      console.log('position:', $('.box').position());
+      console.log('position:', $('.box2').position());
+    </script>
+  </body>
+</html>

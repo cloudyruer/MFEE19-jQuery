@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>offset</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      .height {
+        height: 500px;
+        width: 100%;
+        background-color: #ccc;
+      }
+
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: #afa;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="height"></div>
+    <div id="box" class="box"></div>
+    <div class="height"></div>
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script>
+      console.log('box offset', $('.box').offset());
+      console.log('box offset', $('.box').offset().left);
+      console.log('box offset', $('.box').offset().top);
+
+      //   $('.box').offset({
+      //     top: '50', //數值為字串
+      //     left: '100',
+      //   });
+
+      //   NOTE 已有top 所以要重新命名
+      //   const { top: boxTop, left: boxLeft } = $('.box').offset();
+
+      //   console.log(boxTop, boxLeft);
+
+      //   $(window).on('scroll', () => {
+      //     console.log('scrollTop', $(window).scrollTop());
+      //     console.log('windowHeight', $(window).height());
+      //   });
+
+      console.log(window.pageYOffset);
+      console.log(box.getBoundingClientRect().top);
+
+      const distance = window.pageYOffset + box.getBoundingClientRect().top;
+
+      console.log(distance, '🤦‍♂️');
+    </script>
+  </body>
+</html>

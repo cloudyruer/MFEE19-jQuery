@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ex11</title>
+    <style>
+      body {
+        margin: 0;
+        height: 500vh;
+      }
+
+      .banner {
+        height: calc(100vh - 60px);
+        background-color: yellow;
+      }
+
+      nav {
+        height: 60px;
+        background-color: lightgreen;
+        text-align: center;
+        color: rgb(159, 156, 156);
+      }
+
+      nav.fixed {
+        position: fixed;
+        left: 0;
+        right: 0;
+        /* 頂 */
+        top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="banner"></div>
+    <nav class="fixe">Hello Nav</nav>
+
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script>
+      // console.log($('nav').offset());
+      // NOTE 寫裡面的話 當你fixed加上去
+      // nav的offset就會萬年等於$(window).scrollTop();
+      let n = $('nav').offset().top;
+
+      const addFixed = function () {
+        const w = $(window).scrollTop();
+        console.log(w, n);
+        w >= n ? $('nav').addClass('fixed') : $('nav').removeClass('fixed');
+      };
+      addFixed();
+      $(window).scroll(addFixed);
+    </script>
+  </body>
+</html>

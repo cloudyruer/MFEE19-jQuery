@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ex13</title>
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      .boxUp {
+        height: 60vh;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+
+      .boxUp img {
+        object-fit: contain;
+      }
+
+      .imgBox {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col">
+          <div class="boxUp">
+            <img src="./imgs/product1.jpg" alt="" />
+          </div>
+
+          <div class="boxDown d-flex">
+            <div class="imgBox"><img src="./imgs/product1.jpg" alt="" /></div>
+            <div class="imgBox"><img src="./imgs/product2.jpg" alt="" /></div>
+            <div class="imgBox"><img src="./imgs/product3.jpg" alt="" /></div>
+            <div class="imgBox"><img src="./imgs/product4.jpg" alt="" /></div>
+            <div class="imgBox"><img src="./imgs/product5.jpg" alt="" /></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script>
+      $('.boxDown img').on('click', function () {
+        $('.boxUp img').attr('src', $(this).attr('src'));
+      });
+    </script>
+  </body>
+</html>

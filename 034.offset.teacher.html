@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>offset</title>
+    <style>
+      body {
+        margin: 8px;
+      }
+
+      .height {
+        height: 1200px;
+        width: 100%;
+        background-color: #ccc;
+      }
+
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: #afa;
+        /* transition: 2s; */
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="height"></div>
+    <div class="box"></div>
+    <div class="height"></div>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      console.log('box offset', $('.box').offset());
+      console.log('box offset', $('.box').offset().left);
+      console.log('box offset', $('.box').offset().top);
+
+      // 移動到網頁的 top:50px, left:100px 這個絕對位置。
+      // $('.box').offset({
+      //     top: 60, //數值為字串
+      //     left: 200,
+      // });
+
+      $(window).scroll(function () {
+        console.log('scrollTop', $(window).scrollTop());
+
+        console.log('windowHeight', $(window).height());
+        // if ($(window).scrollTop() > 526) {
+        //     $('.box').css('background', 'orange');
+        // }
+
+        if (
+          $(window).scrollTop() >
+          $('.box').offset().top - $(window).height() / 2
+        ) {
+          $('.box').css('background', 'orange');
+        }
+      });
+    </script>
+  </body>
+</html>

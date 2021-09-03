@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+  </head>
+  <body>
+    <h1 class="animate__animated">An animated element</h1>
+    <button data-animate="animate__bounce">click</button>
+    <button data-animate="animate__shakeY">shakeY</button>
+    <button data-animate="animate__flash">flash</button>
+
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script>
+      $('button').on('click', function () {
+        const animate = $(this).data('animate');
+
+        $('h1')
+          .addClass(animate)
+          .one(
+            'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
+            function () {
+              $(this).removeClass(animate);
+            }
+          );
+      });
+
+      //   $('button').on('click', function () {
+      //     console.log($('h1').hasClass('animate__bounce'));
+      //     if ($('h1').hasClass('animate__bounce'))
+      //       $('h1').removeClass('animate__bounce');
+
+      //     setTimeout(() => {
+      //       $('h1').addClass('animate__bounce');
+      //     });
+      //   });
+    </script>
+  </body>
+</html>

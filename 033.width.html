@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: #afa;
+        padding: 20px;
+        border: 5px solid black;
+        margin: 30px;
+        box-sizing: content-box;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="box"></div>
+
+    <script src="./js/jquery-3.6.0.js"></script>
+
+    <script>
+      // NOTE border-box
+      //   100 - 20*2 -5*2 =50
+
+      console.log('width', $('.box').width()); //100
+      console.log('height', $('.box').height()); //100
+
+      //   100 + 20*2 (padding)
+      console.log('innerWidth', $('.box').innerWidth()); // 140 含padding
+      console.log('innerHeight', $('.box').innerHeight()); // 140 含padding
+
+      //   100 + 20*2 (padding) + 5*2 (border)  = 150
+      console.log('outerWidth', $('.box').outerWidth()); // 150 含 padding + border
+      console.log('outerHeight', $('.box').outerHeight()); // 150 含 padding + border
+
+      //   100 + 20*2 (padding) + 5*2 (border) + 30*2 (margin)  = 210
+      console.log('outerWidth(true)', $('.box').outerWidth(true)); // 210
+      console.log('outerHeight(true)', $('.box').outerHeight(true)); // 210
+    </script>
+  </body>
+</html>

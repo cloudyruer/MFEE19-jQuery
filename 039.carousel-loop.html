@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ex5 loop</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      * {
+        margin: 0;
+      }
+
+      .wrap {
+        max-width: 800px;
+        height: 550px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      ul.train {
+        display: flex;
+        width: 5600px;
+        height: 100%;
+        list-style: none;
+        padding: 0;
+        transform: translateX(-0px);
+        /* transition: 0.5s; */
+      }
+
+      li.car img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .slider-dots {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .slider-dots li {
+        width: 40px;
+        height: 10px;
+        border: 2px solid #fff;
+        margin: 0 4px;
+      }
+
+      /* .slider-dots li:nth-child(1) {
+            background: #FFF;
+        } */
+
+      .left-arrow,
+      .right-arrow {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 80px;
+        /* background-color: #ccc; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+
+      .right-arrow {
+        right: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrap">
+      <ul class="train">
+        <li class="car"><img src="./imgs/slide5.jpg" alt="" /></li>
+        <li class="car"><img src="./imgs/slide1.jpg" alt="" /></li>
+        <li class="car"><img src="./imgs/slide2.jpg" alt="" /></li>
+        <li class="car"><img src="./imgs/slide3.jpg" alt="" /></li>
+        <li class="car"><img src="./imgs/slide4.jpg" alt="" /></li>
+        <li class="car"><img src="./imgs/slide5.jpg" alt="" /></li>
+        <li class="car"><img src="./imgs/slide1.jpg" alt="" /></li>
+      </ul>
+
+      <ul class="slider-dots">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+
+      <div class="left-arrow">
+        <i class="fas fa-chevron-left"></i>
+      </div>
+
+      <div class="right-arrow">
+        <i class="fas fa-chevron-right"></i>
+      </div>
+    </div>
+
+    <script src="./js/jquery-3.6.0.js"></script>
+
+    <script>
+      let page = 0;
+
+      let myIntervalID = '';
+
+      function startInterval() {
+        myIntervalID = setInterval(() => {
+          page++;
+
+          if (page > 4) {
+            page = 0;
+          }
+          // console.log('hi', page);
+          // $('ul.train').css('transform', `translateX(${page * -800}px)`);
+
+          // $('.slider-dots li').eq(page).css('background', '#fff').siblings().css('background', 'transparent');
+
+          // 把畫面的改變，抽出來變成一個函式
+          changePage();
+        }, 3000);
+      }
+
+      $('.slider-dots li').hover(
+        function () {
+          clearInterval(myIntervalID);
+          // 1.我要知道目前 HOVER　的是第幾個 LI
+          console.log('index:', $(this).index());
+          page = $(this).index();
+          // 2.我的火車要移動多少距離?
+          // 0 -> 0
+          // 1 -> -800
+          // 2 -> -1600
+          // 3 -> -2400
+          // 4 -> -3200
+          console.log('move x:', $(this).index() * -800);
+
+          // 選取我的火車dom，並且修改他的 css，修改 transform: translateX(??? px)
+          // 模板字串 `abcd ${變數} efg`
+          // $('ul.train').css('transform', `translateX(${$(this).index() * -800}px)`);
+
+          // $(this).css('background', '#fff').siblings().css('background', 'transparent');
+
+          // 把畫面的改變，抽出來變成一個函式
+          changePage();
+        },
+        function () {
+          // startInterval();
+        }
+      );
+
+      function changePage() {
+        const moveX = page * -800 - 800;
+        $('ul.train')
+          .css('transition', '.5s')
+          .css('transform', `translateX(${moveX}px)`);
+        $('.slider-dots li')
+          .eq(page)
+          .css('background', '#fff')
+          .siblings()
+          .css('background', 'transparent');
+      }
+
+      function changePageQuietly() {
+        const moveX = page * -800 - 800;
+        $('ul.train')
+          .css('transition', 'none')
+          .css('transform', `translateX(${moveX}px)`);
+        $('.slider-dots li')
+          .eq(page)
+          .css('background', '#fff')
+          .siblings()
+          .css('background', 'transparent');
+      }
+
+      // startInterval();
+      $('.slider-dots li').eq(0).css('background', '#fff');
+
+      $('.left-arrow').on('click', function () {
+        console.log('left-arrow');
+        page--;
+        // if (page < 0) {
+        //     page = 4;
+        // }
+        if (page < -1) return;
+        changePage();
+      });
+
+      $('.right-arrow').on('click', function () {
+        console.log('right-arrow');
+        page++;
+        if (page > 5) return;
+        changePage();
+      });
+
+      $('ul.train').on('transitionend', function () {
+        console.log(page);
+
+        if (page >= 5) {
+          page = 0;
+          changePageQuietly();
+        }
+
+        if (page <= -1) {
+          page = 4;
+          changePageQuietly();
+        }
+      });
+
+      changePage();
+    </script>
+  </body>
+</html>

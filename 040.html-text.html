@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>html text</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous"
+    />
+    <style>
+      span {
+        color: palevioletred;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="btn btn-primary" id="getText">get text</button>
+    <button class="btn btn-primary" id="getHtml">get html</button>
+    <h1 id="sample">Hello <span>World</span></h1>
+    <h1 id="result"></h1>
+  </body>
+
+  <script src="./js/jquery-3.6.0.js"></script>
+  <script>
+    $('#getText').on('click', function () {
+      console.log('getText', $('#sample').text());
+      const sampleText = $('#sample').text();
+      $('#result').text(sampleText);
+    });
+
+    $('#getHtml').on('click', function () {
+      console.log('getHtml', $('#sample').html());
+      const sampleHtml = $('#sample').html();
+      $('#result').html(sampleHtml);
+
+      //   let htmlString = '';
+      //   for (let i = 0; i < 10; i++) {
+      //     htmlString += `<li>item ${i + 1} </li>`;
+      //   }
+
+      //   $('#result').html(htmlString);
+
+      $('#result').html(
+        Array.from({ length: 10 }, (_, i) => i).reduce(
+          (acc, cur) => (acc += `<li>item ${cur + 1} </li>`),
+          ''
+        )
+      );
+
+      //   $('#result').html(myLi);
+
+      //   console.log(myLi);
+    });
+  </script>
+</html>

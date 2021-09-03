@@ -1,0 +1,16 @@
+如果要讓mousedown()有連續效果的話
+可以用setInterval
+然後mouseup()的時候clearInterval
+
+-------------
+
+JQ:67-68
+innerWidth 含 padding
+
+10:35 左右
+scroll offset
+視窗+scroll top = 最底部
+
+下午要看各組大專的首頁和商品列表頁面的視覺設計稿
+
+繳交首頁、商品頁、商品細節頁設計稿
