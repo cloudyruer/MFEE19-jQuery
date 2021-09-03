@@ -50,3 +50,16 @@ router
 router 
 控制你要去那裡的交通警察
 
+https://stackoverflow.com/questions/29555290/what-is-the-difference-between-res-end-and-res-send
+
+res.send() will check the structure of your output and set header information accordingly.
+
+res.send() will set "ETag" attribute in the response header
+
+The ETag HTTP response header is an identifier for a specific version of a resource. It allows caches to be more efficient, and saves bandwidth, as a web server does not need to send a full response if the content has not changed.
+
+res.end() will NOT set this header attribute
+
+
+
+
